@@ -8,7 +8,7 @@
       .box {
         width: 70px;
         height: 70px;
-        background-color: teal;
+        background-color: rgb(255, 2, 251);
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -21,6 +21,7 @@
 
       .board {
         height: 100vh;
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCRQXR4aZic_GLR1gAOof5PFbSZABabtYLkxJXSqvJTV3NYeROx5QYvfy0:https://upload.wikimedia.org/wikipedia/commons/3/34/LeBron_James_-_Caricature_%252843847357541%2529.jpg%3Futm_source%3Dcommons.wikimedia.org%26utm_campaign%3Dindex%26utm_content%3Doriginal&s=10")
       }
     </style>
     <!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -55,9 +56,13 @@
         box.on("click", handleBoxClick);
 
         // moves the Box to a new position on the screen along the X-Axis
-        function moveBoxTo(newPositionX) {
-          box.css("left", newPositionX);
-        }
+     function moveBoxTo(newPositionX, newPositionY) {
+  box.css("left", newPositionX);
+  box.css("top", newPositionY);
+}
+
+
+
 
         // changes the text displayed on the Box
         function changeBoxText(newText) {
@@ -69,10 +74,13 @@
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
-
-
-
-
+        var positionX = 0;
+        var positionY = 100;
+        var points = 0;
+        var speed = 10;
+        var speedY = 10;
+        var directionX = 1;
+        var directionY = 1;
 
         /**
          * This Function will be called 20 times/second.
@@ -80,12 +88,33 @@
          * If the box drifts off the screen, turn it around!
          */
         function update() {
+          var boardHeight = jQuery(window).height();
+          var boxWidth = box.outerWidth();
+          var boxHeight = box.outerHeight();
 
-        
+          positionX += speed * directionX;
+          positionY += speedY * directionY;
 
-          
+          if (positionX >= boardWidth - boxWidth) {
+            positionX = boardWidth - boxWidth;
+            directionX = -1;
+          } else if (positionX <= 0) {
+            positionX = 0;
+            directionX = 1;
+          }
+
+          if (positionY >= boardHeight - boxHeight) {
+            positionY = boardHeight - boxHeight;
+            directionY = -1;
+          } else if (positionY <= 0) {
+            positionY = 0;
+            directionY = 1;
+          }
+
+          moveBoxTo(positionX, positionY);
         }
 
+        
         /**
          * This Function will be called each time the box is clicked.
          * Each time it is called, it should perform each of the following actions:
@@ -94,10 +123,11 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
-
-
-
-
+          positionX = 0;
+          directionX = 1;
+          points += 1;
+          speed = 3 * points + 10;
+          changeBoxText(points);
         }
 
 

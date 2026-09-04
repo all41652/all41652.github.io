@@ -38,17 +38,17 @@ createPlatform(1150, 400, 25, 270, "white");
 createPlatform(450, 470, 50, 10, "white");
 createPlatform(400, 250, 150, 20, "white");
 createPlatform(1350, 400, 50, 50, "white");
-createCannon("top", 200, 3000)
-createCannon("right", 300, 3000);
+createCannon("top", 200, 2000)
+createCannon("right", 300, 2000);
 createBadPlatform(200, 725, 1400, 15);
-createCannon("right", 200, 9000);
+createCannon("right", 200, 5000);
 createPlatform(900, 650, 250, 20, "white");
 createPlatform(720, 600, 50, 20, "white");
 createPlatform(1200, 10, 15, 150, "white");
 createPlatform(600, 190, 100, 15,"white");
-createCannon("top", 500, 3000);
+createCannon("top", 500, 2000);
 createPlatform(100, 200, 100, 20,"white");
-createCannon("right", 600, 3000);
+createCannon("right", 600, 2000);
     // TODO 3 - Create Collectables
 createCollectable("steve", 100, 700);
 createCollectable("database", 1150, 100, 0.7, 0.7);
