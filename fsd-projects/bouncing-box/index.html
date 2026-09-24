@@ -8,7 +8,7 @@
       .box {
         width: 70px;
         height: 70px;
-        background-color: rgb(255, 2, 251);
+        background-color: rgb(50, 25, 250);
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -81,7 +81,19 @@
         var speedY = 10;
         var directionX = 1;
         var directionY = 1;
-
+      
+        function getRandomColor(){
+        var red = Math.floor(Math.random() * 256);
+        var green = Math.floor(Math.random() * 256);
+        var blue = Math.floor(Math.random() * 256);
+        return "rgb(" + red + " , " + green + " , " + blue + ")";
+       }
+        function endGame(){
+          clearInterval(interval);
+          box.off("click");
+          board.off("click");
+          changeBoxText("END")
+        }
         /**
          * This Function will be called 20 times/second.
          * Each time it is called, it should move the Box to a new location.
