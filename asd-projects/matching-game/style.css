@@ -1,0 +1,62 @@
+#match-grid {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 10px;
+    perspective: 600px;
+}
+#match-grid .card-container {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+#match-grid .card-container > .card_back{
+  transition: box-shadow 0.3s;
+}
+#match-grid .card-container.matched > .card_back{
+  box-shadow: inset 0 0 5px 5px forestgreen;
+}
+
+body {
+    text-align: center; 
+    background-image:url("https://wallpapershome.com/images/pages/ico_v/28492.jpg");
+    background-size: 10%
+}
+.card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.card_front {
+  background-image:
+ linear-gradient(orange, yellow);
+}
+.card_back {
+  background: #ffffff;
+  transform: rotateY( 180deg );
+}
+
+.card_back img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+.is-flipped {
+  transform: rotateY(180deg);
+}
+a {
+  font-family: 'Sniglet', cursive;
+  background-color: orange;
+  display: block;
+  padding: 10px;
+  margin: 10px;
+}
+
+
+ 
